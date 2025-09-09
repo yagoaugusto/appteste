@@ -25,6 +25,7 @@ import { Reminder, CreateReminderData } from './src/types/Reminder';
 import { ReminderService } from './src/services/ReminderService';
 import ReminderItem from './src/components/ReminderItem';
 import ReminderForm from './src/components/ReminderForm';
+import DemoData from './src/components/DemoData';
 
 const EmptyComponent = React.memo(() => (
   <View style={styles.emptyContainer}>
@@ -142,6 +143,7 @@ function AppContent() {
 
   return (
     <View style={[styles.container, { paddingTop: safeAreaInsets.top }]}>
+      <DemoData />
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Meus Lembretes</Text>
         <TouchableOpacity style={styles.addButton} onPress={handleAddReminder}>

@@ -1,97 +1,176 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Reminder App - Agenda de Lembretes
 
-# Getting Started
+Um aplicativo React Native elegante e funcional para gerenciar lembretes com banco de dados local.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+![Metro Bundler](https://github.com/user-attachments/assets/cf688391-727d-4c79-9b64-c9beb76c8606)
 
-## Step 1: Start Metro
+## 📱 Funcionalidades
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- ✅ **Interface Moderna**: Design bonito e organizado com Material Design
+- ✅ **Multiplataforma**: Funciona em Android e iOS
+- ✅ **Banco de Dados Local**: Armazenamento persistente usando AsyncStorage
+- ✅ **CRUD Completo**: Criar, visualizar, editar e excluir lembretes
+- ✅ **Data e Hora**: Seletor de data e hora integrado
+- ✅ **Status de Conclusão**: Marcar lembretes como concluídos
+- ✅ **Notificações Visuais**: Indicadores para lembretes vencidos
+- ✅ **Pull-to-Refresh**: Atualizar lista puxando para baixo
+- ✅ **Estatísticas**: Visualizar lembretes pendentes e concluídos
+- ✅ **Estado Vazio**: Mensagem amigável quando não há lembretes
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 🛠️ Tecnologias Utilizadas
 
-```sh
-# Using npm
+- **React Native 0.81**: Framework para desenvolvimento mobile
+- **TypeScript**: Tipagem estática para JavaScript
+- **AsyncStorage**: Banco de dados local
+- **React Native SafeAreaContext**: Área segura para diferentes dispositivos
+- **React Native DateTimePicker**: Seletor de data e hora nativo
+- **UUID**: Geração de IDs únicos
+- **Jest**: Framework de testes
+
+## 🚀 Como Executar
+
+### Pré-requisitos
+
+- Node.js (versão 20 ou superior)
+- React Native CLI
+- Android Studio (para Android) ou Xcode (para iOS)
+
+### Instalação
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/yagoaugusto/appteste.git
+cd appteste
+```
+
+2. Instale as dependências:
+```bash
+npm install
+```
+
+### Para Android
+
+1. Inicie o Metro bundler:
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+2. Em outro terminal, execute:
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+### Para iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+1. Instale os pods (apenas para iOS):
+```bash
+cd ios
+pod install
+cd ..
 ```
 
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
+2. Inicie o Metro bundler:
+```bash
+npm start
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+3. Em outro terminal, execute:
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 🧪 Testes
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+Execute os testes unitários:
+```bash
+npm test
+```
 
-## Step 3: Modify your app
+Execute o linting:
+```bash
+npm run lint
+```
 
-Now that you have successfully run the app, let's make changes!
+## 📁 Estrutura do Projeto
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+```
+src/
+├── components/
+│   ├── ReminderItem.tsx      # Componente de item individual
+│   ├── ReminderForm.tsx      # Formulário para criar/editar
+│   └── DemoData.tsx          # Dados de demonstração
+├── services/
+│   └── ReminderService.ts    # Serviço para operações CRUD
+├── types/
+│   └── Reminder.ts           # Tipos TypeScript
+└── utils/
+    └── dateUtils.ts          # Utilitários para datas
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## 💾 Modelo de Dados
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+```typescript
+interface Reminder {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  time: string;
+  isCompleted: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+```
 
-## Congratulations! :tada:
+## 🎨 Design e UX
 
-You've successfully run and modified your React Native App. :partying_face:
+- **Cores**: Paleta azul e verde para estados diferentes
+- **Tipografia**: Hierarquia clara com diferentes pesos
+- **Espaçamento**: Layout responsivo com espaçamentos consistentes
+- **Feedback Visual**: Indicadores de estado (pendente, concluído, vencido)
+- **Animações**: Transições suaves e feedback tátil
 
-### Now what?
+## 📱 Funcionalidades Principais
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### 1. Lista de Lembretes
+- Visualização ordenada por data/hora
+- Indicadores visuais para status
+- Pull-to-refresh para atualizar
+- Estatísticas no topo
 
-# Troubleshooting
+### 2. Criar/Editar Lembrete
+- Formulário modal elegante
+- Validação de campos obrigatórios
+- Seletores nativos de data/hora
+- Interface responsiva
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+### 3. Gerenciamento
+- Marcar como concluído com um toque
+- Editar ao tocar no item
+- Excluir com confirmação
+- Ordenação automática
 
-# Learn More
+## 🔧 Configuração de Desenvolvimento
 
-To learn more about React Native, take a look at the following resources:
+### Scripts Disponíveis
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- `npm start`: Inicia o Metro bundler
+- `npm run android`: Executa no Android
+- `npm run ios`: Executa no iOS
+- `npm test`: Executa os testes
+- `npm run lint`: Verifica o código com ESLint
+
+### Ambiente de Desenvolvimento
+
+- ESLint configurado para React Native
+- Prettier para formatação de código
+- Jest para testes unitários
+- TypeScript para tipagem estática
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+Desenvolvido com ❤️ usando React Native
